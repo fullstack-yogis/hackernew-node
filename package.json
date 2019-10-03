@@ -1,0 +1,12 @@
+{
+  "name": "hackernew-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src"
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.18.3"
+  }
+}
