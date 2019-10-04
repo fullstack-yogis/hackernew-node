@@ -49,18 +49,20 @@ function post(parent, args, context, info) {
   });
 }
 
-function vote(parent, args, context, info) {
+async function vote(parent, args, context, info) {
   const userId = getUserId(context);
-  const linkExists = context.prisma.$exists.vote({
+  console.log('the user is ', userId);
+  const linkExists = await context.prisma.$exists.vote({
     user: { id: userId },
     link: { id: args.linkId },
   });
+  console.log('link is ', linkExists);
   if (linkExists) {
     throw new Error(`Already exists: ${args.linkId})`);
   }
   return context.prisma.createVote({
-    link: connect({ id: args.linkId }),
-    user: connect({ id: userId }),
+    link: { connect: { id: args.linkId } },
+    user: { connect: { id: userId } },
   });
 }
 
