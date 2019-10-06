@@ -40,9 +40,12 @@ const server = new GraphQLServer({
   },
 });
 
-// server.express.use('/public', express.static(__dirname + '../public'));
-server.express.use(express.static(path.join(__dirname, '..', 'public')));
-
 server.start(opts, ({ port }) =>
   console.log(`Server is running on http://localhost:${port}`)
 );
+
+// server.express.use('/public', express.static(__dirname + '../public'));
+server.express.use(express.static(path.join(__dirname, '..', 'public')));
+server.express.get('*', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
