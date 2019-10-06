@@ -24,7 +24,7 @@ const resolvers = {
 const opts = {
   port: 4000,
   endpoint: '/graphql',
-  subscriptions: '/subscriptions',
+  // subscriptions: '/subscriptions',
   playground: '/playground',
 };
 // 3
