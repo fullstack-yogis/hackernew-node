@@ -51,12 +51,10 @@ function post(parent, args, context, info) {
 
 async function vote(parent, args, context, info) {
   const userId = getUserId(context);
-  console.log('the user is ', userId);
   const linkExists = await context.prisma.$exists.vote({
     user: { id: userId },
     link: { id: args.linkId },
   });
-  console.log('link is ', linkExists);
   if (linkExists) {
     throw new Error(`Already exists: ${args.linkId})`);
   }
