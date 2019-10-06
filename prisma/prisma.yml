@@ -8,6 +8,6 @@ datamodel: datamodel.prisma
 # Specifies language & location for the generated Prisma client
 generate:
   - generator: javascript-client
-    output: ../src/generated/prisma-client
+    output: ../server/generated/prisma-client
 hooks:
   post-deploy:
